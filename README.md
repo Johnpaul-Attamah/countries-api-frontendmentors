@@ -30,12 +30,12 @@ Users should be able to:
 - Toggle the color scheme between light and dark mode *(optional)*
 
 ### Screenshot
-
+![Screenshot (3)](https://user-images.githubusercontent.com/44214523/128651605-62d90a32-e6f8-4ceb-a709-52a36491d2af.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Code](https://github.com/Johnpaul-Attamah/countries-api-frontendmentors/)
+- Live Site URL: [Go Live](https://peaceful-kalam-9b16eb.netlify.app/)
 
 ## My process
 
