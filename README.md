@@ -1,70 +1,175 @@
-# Getting Started with Create React App
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Overview
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### The challenge
 
-### `npm test`
+Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode *(optional)*
 
-### `npm run build`
+### Screenshot
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Links
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-### `npm run eject`
+## My process
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Built with
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [Styled Components](https://styled-components.com/) - For styles
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### What I learned
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# CSS
+- Theming and dark mode switch with styled components
+- Styling SVGs (scaling using viewBox)
+- using sprite images from SVGs 
+- responsive design practices
+- passing styles through props
+- extending props as css variables
+- Theming with Styled components
+- etc.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```css
+.proud-of-this-css {
+    ...
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  & form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-### Code Splitting
+        @media screen and (min-width: 1000px) {
+            justify-content: flex-start;
+        }
+    }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    & label {
+        display: block;
+        position: absolute;
+        top: 32%;
+        left: 13%;
 
-### Analyzing the Bundle Size
+        @media screen and (min-width: 500px) {
+            left: 8%;
+        }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    ...
 
-### Making a Progressive Web App
+```
+## Javascript
+- setting up theme objects for styled components
+- implementing night mode switch with hooks
+- lifting up state
+- Get data from APi using react hooks
+- Filter API data
+- Search Data
+- navigate pages using react router
+- Add pagination to Api with no page query from backend
+- filtering data
+- separation of concerns
+- etc.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```js
+...
+let uri = `${BASE_URI}/alpha?codes=${match.params.name}`;
 
-### Advanced Configuration
+    useEffect(() => {
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+        const handleCountryDetails = async() => {
+            try {
+              const { data } = await axios.get(uri);
+              if(data){
+                setCountryDetails(data)
 
-### Deployment
+                let borders = data[0].borders;
+                
+                let countryNames = [];
+                for await (let country of borders) {
+                    let uri = `${BASE_URI}/alpha?codes=${country}`;
+                    const {data}  = await axios.get(uri);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+                    if(data) {
+                        countryNames.push(data[0].name);
+                    }
+    ...
 
-### `npm run build` fails to minify
+    ...
+    
+       if(desktopSize.matches) {
+      setItemsPerPage(16)
+      setPageNumberLimit(10);
+      setMaxPageNumberLimit(10);
+    }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    window.addEventListener('resize', () => {
+      window.location.reload();
+    })
+
+    getAllCountries();
+  },[setLoading, setError, error]);
+
+  const getCountriesByRegion = async(region) => {
+
+    setPageDisplay(true);
+    setRegion(region);
+    setCurrentPage(1);
+    setMinPageNumberLimit(0);
+    setMaxPageNumberLimit(3);
+
+    const tabletSize = window.matchMedia('(min-width: 500px)');
+    if(tabletSize.matches) {
+      setPageNumberLimit(5);
+      setMaxPageNumberLimit(5);
+    }
+    
+    let uri = `${BASE_URI}/region/${region}`
+        ...
+```
+
+### Useful resources
+
+- [CSS in Js with styled components](https://styled-components.com/docs/advanced) - Styled components makes it easy to work with css in React. Everything flows like normal javascript
+
+- [React js with hooks and ref](https://reactjs.org/) - React makes the job simpler, you can easily put up great work in few lines.
+
+
+
+## Author
+
+- Website - [Johnpaul Attamah](https://github.com/Johnpaul-Attamah)
+- Frontend Mentor - [Johnpaul-Attamah](https://www.frontendmentor.io/profile/Johnpaul-Attamah)
+- LinkedIn - [Johnpaul](https://www.linkedin.com/in/johnpaul-attamah-4b265983/)
+
