@@ -16,7 +16,6 @@ export const StyledMainBody = styled.main`
             padding: 0 5rem;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
         }
 
         & .country {
