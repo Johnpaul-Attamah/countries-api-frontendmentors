@@ -132,6 +132,7 @@ function App() {
   //search country
 
   const getCountryByName = async(e) => {
+    e.preventDefault();
 
     setSearchInput(e.target.value);
 
