@@ -32,7 +32,7 @@ export const StyledSearchInput = styled.div`
         }
 
         @media screen and (min-width: 1000px) {
-            top: 20%;
+            top: 30%;
             left: 4rem;
         }
         

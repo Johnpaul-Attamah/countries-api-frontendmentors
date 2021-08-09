@@ -23,6 +23,10 @@ export const StyledFilterBox = styled.div`
         border-radius: 10px;
         box-shadow: var(--shadow-dark);
 
+        @media screen and (min-width: 1000px) {
+            padding: 2rem 4rem;
+        }
+
         & h2 {
             font-size: 2rem;
             font-weight: 600;

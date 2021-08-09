@@ -12,7 +12,7 @@ export const StyledMainBody = styled.main`
         width: 80%;
 
         @media screen and (min-width: 1000px) {
-            width: calc(85% + 20rem);
+            width: calc(85% + 30rem);
             padding: 0 5rem;
             display: flex;
             flex-wrap: wrap;
@@ -27,8 +27,8 @@ export const StyledMainBody = styled.main`
             border-radius: 10px;
 
             @media screen and (min-width: 1000px) {
-                flex: 1 1 0;
-                margin: 5rem;
+                width: 19%;
+                margin: 4rem;
             }
     
             & .top {

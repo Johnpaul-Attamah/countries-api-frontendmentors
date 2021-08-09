@@ -28,8 +28,7 @@ const Home = ({
     onPrevSelect,
     onNextSelect,
     onPageSelect,
-    onSearchChange,
-    onSearchSubmit
+    onSearchChange
 }) => {
 
     return (
@@ -39,7 +38,6 @@ const Home = ({
                 error={error}
                 searchInput={searchInput}
                 onSearchChange={onSearchChange}
-                onSearchSubmit={onSearchSubmit}
             />
 
             <FilterBox

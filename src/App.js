@@ -131,21 +131,19 @@ function App() {
 
   //search country
 
-  const handleSearchChange = (e) => setSearchInput(e.target.value);
-
   const getCountryByName = async(e) => {
-    e.preventDefault();
 
-    let uri = `${BASE_URI}/name/${searchInput}?fullText=true`;
+    setSearchInput(e.target.value);
+
+    let uri = `${BASE_URI}/name/${searchInput}`;
     try {
       const { data } = await axios.get(uri);
       
       setCountries(data); 
       
       setPageDisplay(false);
-      setSearchInput('');
     } catch (error) {
-      setError(error.message);
+      setError(null);
     }
   }
 
@@ -185,8 +183,7 @@ function App() {
               onNextSelect={handleNextBtn}
               onPageSelect={handlePageSelect}
               onRegionSelect={getCountriesByRegion}
-              onSearchChange={handleSearchChange}
-              onSearchSubmit={getCountryByName}
+              onSearchChange={getCountryByName}
             />
           )}/>
           <Route exact path="/countries/:name" component={Details}/>

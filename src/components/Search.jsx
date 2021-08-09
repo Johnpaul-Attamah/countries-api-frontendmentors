@@ -2,10 +2,10 @@ import React from 'react';
 import { SearchIcon } from '../images/vectors/Sprite';
 import { StyledSearchInput } from '../styles/search.style';
 
-const Search = ({ onSearchSubmit, searchInput, onSearchChange, error }) => {
+const Search = ({searchInput, onSearchChange, error }) => {
     return (
         <StyledSearchInput>
-            <form onSubmit={(e) => onSearchSubmit(e)}>
+            <form onSubmit={(e) => onSearchChange(e)}>
                 <input
                     type="text"
                     id="search"
