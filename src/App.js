@@ -93,9 +93,9 @@ function App() {
       setMaxPageNumberLimit(10);
     }
 
-    window.addEventListener('resize', () => {
-      window.location.reload();
-    })
+    // window.addEventListener('resize', () => {
+    //   window.location.reload();
+    // })
 
     getAllCountries();
   },[setLoading, setError, error]);
