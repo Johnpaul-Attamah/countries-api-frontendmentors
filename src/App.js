@@ -84,6 +84,17 @@ function App() {
     const tabletSize = window.matchMedia('(min-width: 500px)');
     const desktopSize = window.matchMedia('(min-width: 1000px)');
     
+    window.addEventListener('load', () => {
+      if(tabletSize.matches) {
+        setPageNumberLimit(5);
+        setMaxPageNumberLimit(5);
+      }
+      if(desktopSize.matches) {
+        setItemsPerPage(16)
+        setPageNumberLimit(10);
+        setMaxPageNumberLimit(10);
+      }
+    })
     window.addEventListener('resize', () => {
       if(tabletSize.matches) {
         setPageNumberLimit(5);
@@ -108,6 +119,12 @@ function App() {
     setMaxPageNumberLimit(3);
 
     const tabletSize = window.matchMedia('(min-width: 500px)');
+    window.addEventListener('load', () => {
+    if(tabletSize.matches) {
+      setPageNumberLimit(5);
+      setMaxPageNumberLimit(5);
+    }})
+
     window.addEventListener('resize', () => {
     if(tabletSize.matches) {
       setPageNumberLimit(5);
