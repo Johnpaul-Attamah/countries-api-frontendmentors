@@ -15,8 +15,12 @@ const MainBody = ({
     onPageSelect, 
     currentPage,
     onPrevSelect,
-    onNextSelect
+    onNextSelect,
+    onClearSearch
 }) => {
+
+    
+
     return (
         <StyledMainBody>
             {
@@ -28,7 +32,7 @@ const MainBody = ({
                             countries.map(country => (
                                 <div className="country" key={country.name}>
                                     <div className="top">
-                                        <Link to={`/countries/${country.alpha3Code}`}>
+                                        <Link to={`/countries/${country.alpha3Code}`} onClick={onClearSearch}>
                                             <img src={country.flag} alt="country flag" /></Link>
                                     </div>
                                     <div className="details">

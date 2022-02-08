@@ -11,7 +11,7 @@ import Details from './components/Details';
 
 function App() {
   
-  const BASE_URI = 'https://restcountries.eu/rest/v2';
+  const BASE_URI = 'https://restcountries.com/v2';
 
   const [theme, setTheme] = useState('dark');
   const [loading, setLoading] = useState(true);
@@ -61,24 +61,8 @@ function App() {
   }
 
   useEffect(() => {
-    let uri = `${BASE_URI}/all`;
-
     if(error) {
       clearError();
-    }
-
-    const getAllCountries = async() => {
-      try {
-        const { data } = await axios.get(uri);
-        if(data) {
-          setLoading(false);
-          setCountries(data);
-        }
-        
-      } catch (error) {
-        setError(error);
-      }
-    
     }
 
     const tabletSize = window.matchMedia('(min-width: 500px)');
@@ -109,6 +93,23 @@ function App() {
 
     getAllCountries();
   },[setLoading, setError, error]);
+
+  const getAllCountries = async() => {
+
+    let uri = `${BASE_URI}/all`;
+
+    try {
+      const { data } = await axios.get(uri);
+      if(data) {
+        setLoading(false);
+        setCountries(data);
+      }
+      
+    } catch (error) {
+      setError(error);
+    }
+  
+  }
 
   const getCountriesByRegion = async(region) => {
 
@@ -165,7 +166,11 @@ function App() {
     }
   }
 
-  //getCountryDetails
+  const handleClearSearch = () => {
+    setSearchInput('');
+    setRegion('');
+    getAllCountries();
+  }
 
   const clearError = () => {
     setTimeout(() => {
@@ -202,6 +207,7 @@ function App() {
               onPageSelect={handlePageSelect}
               onRegionSelect={getCountriesByRegion}
               onSearchChange={getCountryByName}
+              onClearSearch={handleClearSearch}
             />
           )}/>
           <Route exact path="/countries/:name" component={Details}/>

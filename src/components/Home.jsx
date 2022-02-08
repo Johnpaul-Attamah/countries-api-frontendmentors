@@ -28,7 +28,8 @@ const Home = ({
     onPrevSelect,
     onNextSelect,
     onPageSelect,
-    onSearchChange
+    onSearchChange,
+    onClearSearch
 }) => {
 
     return (
@@ -58,6 +59,7 @@ const Home = ({
             onPrevSelect={onPrevSelect}
             onNextSelect={onNextSelect}
             onPageSelect={onPageSelect}
+            onClearSearch={onClearSearch}
           />
         </Fragment>
     )

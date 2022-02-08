@@ -11,6 +11,11 @@ const FilterBox = ({ region, onRegionSelect }) => {
 
     const regions = ["africa", "americas", "asia", "europe", "oceania"]
 
+    const handleFilter = (region) => {
+        onRegionSelect(region);
+        setToggleFilter(true);
+    }
+
     return (
         <StyledFilterBox>
             <div className="drop-down">
@@ -27,7 +32,7 @@ const FilterBox = ({ region, onRegionSelect }) => {
                             <div 
                                 key={continent}
                                 className={region === continent ? "region active" : "region"}
-                                onClick={() => onRegionSelect(continent)}
+                                onClick={() => handleFilter(continent)}
                             >
                                 {continent}
                             </div>
